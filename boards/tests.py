@@ -56,3 +56,4 @@ class BoardTopicsTests(TestCase):
         form = response.context.get('form')
         self.assertEquals(response.status_code, 200)
         self.assertTrue(form.errors)
+
