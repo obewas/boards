@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import resolve, reverse
-from .views import signup
+from ..views import signup
+from ..forms import SignUpForm
+
 # Create your tests here.
 class SignUpTests(TestCase):
     def setUp(self):
@@ -23,7 +25,7 @@ class SignUpTests(TestCase):
 
     def test_contains_form(self):
         form = self.response.context.get('form')
-        self.assertIsInstance(form, UserCreationForm)
+        self.assertIsInstance(form, SignUpForm)
 class SuccessfulSignUpTests(TestCase):
     def setUp(self):
         url = reverse('signup')
@@ -34,7 +36,7 @@ class SuccessfulSignUpTests(TestCase):
         }
         self.response = self.client.post(url, data)
         self.home_url = reverse('home')
-        
+
 class InvalidSignUpTests(TestCase):
     def setUp(self):
         url = reverse('signup')
