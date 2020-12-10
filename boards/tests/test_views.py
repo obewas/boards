@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.urls import reverse, resolve
-from .views import home, board_topics
+from ..views import home, board_topics, new_topic
 from django.test import TestCase
-from .models import Board
-from .forms import NewTopicForm
+from ..models import Board
+from ..forms import NewTopicForm
 
 # Create your tests here.
 class HomeTests(TestCase):
